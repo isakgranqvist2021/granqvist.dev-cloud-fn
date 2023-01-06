@@ -19,6 +19,6 @@ steps:
       - deploy
       - function-1
       - --region=europe-west1
-      - --source=.
+      - --source=dist
       - --trigger-http
       - --runtime=nodejs18
