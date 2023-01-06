@@ -1,20 +1,34 @@
 const childProcess = require('child_process');
 const fs = require('fs');
+const path = require('path');
 
-const build = () => {
-  fs.rmSync('dist', { recursive: true, force: true });
+const basePath = path.resolve('.');
 
-  childProcess.execSync('tsc');
+console.log('Remove old files');
+fs.rmSync(path.join(basePath, 'dist'), { recursive: true, force: true });
 
-  fs.mkdirSync('dist/views');
+console.log('Compile typescript');
+childProcess.execSync('npx tsc');
 
-  fs.cpSync('views', 'dist/views', { recursive: true }, (err) => {
-    console.log(err);
-  });
+console.log('Create dist directory');
+fs.mkdirSync(path.join(basePath, 'dist/views'));
 
-  fs.cpSync('package.json', 'dist/package.json', {}, (err) => {
-    console.log(err);
-  });
-};
+console.log('Copy views to dist/views');
+fs.cpSync(
+  path.join('views'),
+  path.join('dist/views'),
+  { recursive: true },
+  (err) => {
+    console.log(err.message);
+  },
+);
 
-build();
+console.log('Copy package.json to dist/package.json');
+fs.cpSync(
+  path.join('package.json'),
+  path.join('dist/package.json'),
+  {},
+  (err) => {
+    console.log(err.message);
+  },
+);
