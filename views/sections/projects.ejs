@@ -1,0 +1,28 @@
+<section id="projects" class="bg-light" tabindex="4">
+  <div class="container">
+    <h2>My Projects</h2>
+
+    <div class="grid">
+      <% repositories.forEach(repository => { %>
+      <a
+        class="grid-item"
+        title="View repository"
+        href="<%= repository.html_url %>"
+      >
+        <img
+          data-aos="fade-in"
+          class="media"
+          alt="<%= repository.name %>"
+          src="https://storage.googleapis.com/granqvist_dev_bucket/images/svg/<%= repository.language %>.svg"
+        />
+
+        <div class="grid-item-body">
+          <h4><%= repository.name %></h4>
+          <p><%= repository.description %></p>
+          <small>Last updated: <%= repository.pushed_at %></small>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </div>
+</section>

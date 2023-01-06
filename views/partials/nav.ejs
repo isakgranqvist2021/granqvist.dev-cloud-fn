@@ -1,0 +1,28 @@
+<nav>
+  <div class="container">
+    <a href="#home" aria-label="Top of the page link">
+      <img
+        class="logo"
+        aria-label="granqvist.dev company logo"
+        src="https://storage.googleapis.com/granqvist_dev_bucket/images/svg/logo.svg"
+        alt="Isak Granqvist Logo"
+      />
+    </a>
+    <div class="nav-links">
+      <a href="#home" onclick="closeNav()">home</a>
+      <a href="#solutions" onclick="closeNav()">solutions</a>
+      <a href="#technology" onclick="closeNav()">technology</a>
+      <a href="#about" onclick="closeNav()">about</a>
+      <a href="#projects" onclick="closeNav()">projects</a>
+      <a href="#contact" onclick="closeNav()">contact</a>
+    </div>
+
+    <div class="bars" onclick="toggleNav()">
+      <div class="bars-line"></div>
+      <div class="bars-line"></div>
+      <div class="bars-line"></div>
+    </div>
+  </div>
+
+  <div class="backdrop" onclick="closeNav()"></div>
+</nav>
