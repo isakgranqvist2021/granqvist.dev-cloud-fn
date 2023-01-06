@@ -1,0 +1,24 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: '1600s'
+
+steps:
+  - name: node:18.12.1
+    entrypoint: npm
+    args: ['install']
+
+  - name: node:18.12.1
+    entrypoint: npm
+    args: ['run', 'build']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - gcloud
+      - functions
+      - deploy
+      - function-1
+      - --region=europe-west-1
+      - --source=.
+      - --trigger-http
+      - --runtime=RUNTIME
