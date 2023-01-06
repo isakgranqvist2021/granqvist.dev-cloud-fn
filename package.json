@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsc -W",
     "start": "node dist/index.js",
-    "build": "tsc"
+    "build": "node build.js"
   },
   "author": "",
   "license": "ISC",
